@@ -15,17 +15,9 @@ bool is_adjacent(const string& word1, const string& word2)
     
 }
 
-bool is_same_word(const string &word1, const string &word2)
-{
-    if (begin_word == end_word)
-    {
-        return begin_word;
-    } 
-}
-
 bool is_in_word_list(const string &word1, const set<string>& word_list)
 {
-    for (string &s : word_list)
+    for (const string &s : word_list)
     {
         if (s == word1)
         {
@@ -37,16 +29,18 @@ bool is_in_word_list(const string &word1, const set<string>& word_list)
 
 vector<string> generate_word_ladder(const string& begin_word, const string& end_word, const set<string>& word_list)
 {
-    if (is_same_word)
+    vector<string> solution;
+    if (begin_word == end_word)
     {
-        return begin_word;
+        solution.push_back(begin_word);
+        return solution;
     } else if (!is_in_word_list(begin_word, word_list) || !is_in_word_list(end_word, word_list)) {
         error(begin_word, end_word, "Not in word list");
     }
 
     map<string, vector<string>> mappings;
 
-    for (string &word : begin_word)
+    for (const string &word : word_list)
     {
 
     }
