@@ -1,6 +1,6 @@
 F = -std=c++20 -Wall -Wextra -Wpedantic -Wfatal-errors
 Z = ICS46_hw8.zip
-P = graph
+P = main
 
 def: $P
 
