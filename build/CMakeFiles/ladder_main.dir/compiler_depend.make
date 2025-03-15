@@ -249,13 +249,17 @@ CMakeFiles/ladder_main.dir/src/ladder.cpp.o: ../src/ladder.cpp \
   /usr/include/c++/11/tr1/modified_bessel_func.tcc \
   /usr/include/c++/11/tr1/poly_hermite.tcc \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
-  /usr/include/c++/11/tr1/riemann_zeta.tcc
+  /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  /usr/include/c++/11/stack \
+  /usr/include/c++/11/bits/stl_stack.h
 
 CMakeFiles/ladder_main.dir/src/ladder_main.cpp.o: ../src/ladder_main.cpp \
   /usr/include/stdc-predef.h
 
 
 ../src/ladder_main.cpp:
+
+/usr/include/c++/11/bits/stl_stack.h:
 
 /usr/include/c++/11/tr1/riemann_zeta.tcc:
 
@@ -510,6 +514,8 @@ CMakeFiles/ladder_main.dir/src/ladder_main.cpp.o: ../src/ladder_main.cpp \
 /usr/include/c++/11/bits/stl_function.h:
 
 /usr/include/stdc-predef.h:
+
+/usr/include/c++/11/stack:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
