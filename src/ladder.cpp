@@ -12,7 +12,7 @@ int get_edit_distance(const std::string& str1, const std::string& str2)
 
     // cout << m << " " << n << endl;
 
-    vector<int> matrixWagnerFischer((m+1) * (n+1), 0);
+    vector<int> matrixWagnerFischer((m+1) * (n+1));
 
 
     // Initialize the first row to edit distance of word to an empty string
@@ -102,10 +102,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
     vector<string> solution;
     if (begin_word == end_word)
     {
-        solution.push_back(begin_word);
         return solution;
-    } else if (!is_in_word_list(begin_word, word_list) || !is_in_word_list(end_word, word_list)) {
-        error(begin_word, end_word, "Not in word list");
     }
 
     queue<vector<string>> ladder;
@@ -161,6 +158,7 @@ void print_word_ladder(const vector<string>& ladder) {
     {
         cout << word << " ";
     }
+    cout << endl;
 }
 
 
