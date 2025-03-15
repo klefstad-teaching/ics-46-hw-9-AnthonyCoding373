@@ -28,25 +28,24 @@ int get_edit_distance(const std::string& str1, const std::string& str2)
         matrixWagnerFischer[i * (m + 1)] = i;
     }
 
-    std::cout << "VAL" << endl;
-    for (int x = 0; x <= n; ++x)
-    {
-        for (int y = 0; y <= m; ++y)
-        {
-            std::cout << "(" << x << " " << y << "): " << matrixWagnerFischer[x * (m+1) + y] << endl;
-        }
-    }
+    // for (int x = 0; x <= n; ++x)
+    // {
+    //     for (int y = 0; y <= m; ++y)
+    //     {
+    //         std::cout << "(" << x << " " << y << "): " << matrixWagnerFischer[x * (m+1) + y] << endl;
+    //     }
+    // }
     
 
-    std::cout << 1 * (m + 1) + 1 << endl;
-    std::cout << 1 * (m + 1) + 1 - (m + 2) << endl;
+    // std::cout << 1 * (m + 1) + 1 << endl;
+    // std::cout << 1 * (m + 1) + 1 - (m + 2) << endl;
     
 
     for (int x = 1; x <= n; ++x)
     {
         for (int y = 1; y <= m; ++y)
         {
-            cout << x << " " << y << endl;
+            // cout << x << " " << y << endl;
             int index = x * (m + 1) + y;
             if (str1[y - 1] == str2[x - 1])
                 matrixWagnerFischer[index] = matrixWagnerFischer[index - (m + 2)] ;
@@ -55,20 +54,20 @@ int get_edit_distance(const std::string& str1, const std::string& str2)
                 int left = matrixWagnerFischer[index - 1];
                 int top = matrixWagnerFischer[index - (m + 1)];
                 int min = std::min(std::min(topLeft, left), top);
-                cout << "New Val: " << min << endl;
+                // cout << "New Val: " << min << endl;
                 matrixWagnerFischer[index] = min + 1;
             }
         }
     }
 
-    std::cout << "VAL" << endl;
-    for (int x = 0; x <= n; ++x)
-    {
-        for (int y = 0; y <= m; ++y)
-        {
-            std::cout << "(" << x << " " << y << "): " << matrixWagnerFischer[x * (m+1) + y] << endl;
-        }
-    }
+    // std::cout << "VAL" << endl;
+    // for (int x = 0; x <= n; ++x)
+    // {
+    //     for (int y = 0; y <= m; ++y)
+    //     {
+    //         std::cout << "(" << x << " " << y << "): " << matrixWagnerFischer[x * (m+1) + y] << endl;
+    //     }
+    // }
 
     // cout << matrixWagnerFischer[m][n] << endl;
 
@@ -147,6 +146,35 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
 
 
 
-void load_words(set<string> & word_list, const string& file_name) {}
-void print_word_ladder(const vector<string>& ladder) {}
-void verify_word_ladder() {}
+void load_words(set<string> & word_list, const string& file_name) {
+    ifstream in(file_name);
+
+    string word;
+    while (in >> word)
+    {
+        word_list.insert(word);
+    }
+}
+
+void print_word_ladder(const vector<string>& ladder) {
+    for (const string &word : ladder)
+    {
+        cout << word << " ";
+    }
+}
+
+
+#define my_assert(e) {cout << #e << ((e) ? " passed": " failed") << endl;}
+void verify_word_ladder() {
+
+    set<string> word_list;
+
+    load_words(word_list, "src/words.txt");
+
+    my_assert(generate_word_ladder("cat", "dog", word_list).size() == 4);
+    my_assert(generate_word_ladder("marty", "curls", word_list).size() == 6);
+    my_assert(generate_word_ladder("code", "data", word_list).size() == 6);
+    my_assert(generate_word_ladder("work", "play", word_list).size() == 6);
+    my_assert(generate_word_ladder("sleep", "awake", word_list).size() == 8);
+    my_assert(generate_word_ladder("car", "cheat", word_list).size() == 4);
+}
