@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     int distance_size = distances.size();
     for (int i = 0; i < distance_size; ++i)
     {
-        vector<int> shortestPath = extract_shortest_path(previous, i);
+        vector<int> shortestPath = extract_shortest_path(distances, previous, i);
         print_path(shortestPath, distances[i]);
     }
 }
